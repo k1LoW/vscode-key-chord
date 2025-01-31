@@ -2,7 +2,7 @@
   "name": "key-chord",
   "displayName": "Key Chord",
   "description": "Map pairs of simultaneously pressed keys to commands for VSCode",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "publisher": "k1low",
   "repository": {
     "type": "git",
@@ -12,7 +12,7 @@
     "vscode": "^1.96.0"
   },
   "categories": [
-    "Other"
+    "Keymaps"
   ],
   "license": "MIT",
   "activationEvents": [
