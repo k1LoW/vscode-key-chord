@@ -19,7 +19,7 @@ class Controller {
       vscode.window.showErrorMessage("key-chord.twoKeysDelay is not set");
       return;
     }
-    if(typeof twoKeysDelay !== "number") {
+    if (typeof twoKeysDelay !== "number") {
       vscode.window.showErrorMessage("key-chord.twoKeysDelay is not a number");
       return;
     }
@@ -39,33 +39,33 @@ class Controller {
       this.secondChar = '';
       this.time = 0;
       editor.edit((builder) => {
-				builder.insert(editor.selection.active, char);
-			});
+        builder.insert(editor.selection.active, char);
+      });
       return;
-    }    
-		if (!this.firstChar) {
-			this.firstChar = char;
-			this.time = performance.now();
-			return;
-		}
-		this.secondChar = char;
-		const key = this.firstChar + this.secondChar;
+    }
+    if (!this.firstChar) {
+      this.firstChar = char;
+      this.time = performance.now();
+      return;
+    }
+    this.secondChar = char;
+    const key = this.firstChar + this.secondChar;
     const key2 = this.secondChar + this.firstChar;
-		const diff = performance.now() - this.time;
+    const diff = performance.now() - this.time;
     this.firstChar = '';
-		this.secondChar = '';
-		this.time = 0;
-		if (diff > this.twoKeysDelay) {
-			editor.edit((builder) => {
-				builder.insert(editor.selection.active, key);
-			});
-			return;
-		}
+    this.secondChar = '';
+    this.time = 0;
+    if (diff > this.twoKeysDelay) {
+      editor.edit((builder) => {
+        builder.insert(editor.selection.active, key);
+      });
+      return;
+    }
     for (const [k, v] of Object.entries(this.defs)) {
-      if (k != key && k != key2) {
+      if (k !== key && k !== key2) {
         continue;
       }
-      if(typeof v === 'string') {
+      if (typeof v === 'string') {
         vscode.commands.executeCommand(v);
         return;
       }
@@ -76,14 +76,14 @@ class Controller {
 export function activate(context: vscode.ExtensionContext) {
   const ctrl = new Controller();
 
-	const disposable = vscode.commands.registerCommand('type', (args) => {
-		if (!vscode.window.activeTextEditor) {
-			return;
-		}
+  const disposable = vscode.commands.registerCommand('type', (args) => {
+    if (!vscode.window.activeTextEditor) {
+      return;
+    }
     ctrl.process(args.text, vscode.window.activeTextEditor);
-	});
+  });
 
-	context.subscriptions.push(disposable);
+  context.subscriptions.push(disposable);
 }
 
 export function deactivate() { }
