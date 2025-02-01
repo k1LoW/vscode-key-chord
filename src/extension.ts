@@ -84,6 +84,13 @@ export function activate(context: vscode.ExtensionContext) {
   });
 
   context.subscriptions.push(disposable);
+
+  vscode.workspace.onDidChangeConfiguration(event => {
+		let affected = event.affectsConfiguration("key-chord.definitions") || event.affectsConfiguration("key-chord.twoKeysDelay");
+		if (affected) {
+			ctrl.reload();
+		}
+	});
 }
 
 export function deactivate() { }
