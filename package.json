@@ -26,7 +26,7 @@
         "key-chord.twoKeysDelay": {
           "type": "number",
           "description": "Max time delay between two key press to be considered a key chord(msec).",
-          "default": 50
+          "default": 150
         },
         "key-chord.definitions": {
           "type": "object",
