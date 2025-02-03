@@ -1,8 +1,7 @@
 import * as vscode from 'vscode';
 
 class Controller {
-  private firstChar: string = '';
-  private secondChar: string = '';
+  private firstKey: string = '';
   private twoKeysDelay: number = 0;
   private defs: any;
   private time: number = 0;
@@ -35,25 +34,23 @@ class Controller {
 
   public process(char: string, editor: vscode.TextEditor) {
     if (!this.keyChars.includes(char)) {
-      this.firstChar = '';
-      this.secondChar = '';
+      this.firstKey = '';
       this.time = 0;
       editor.edit((builder) => {
         builder.insert(editor.selection.active, char);
       });
       return;
     }
-    if (!this.firstChar) {
-      this.firstChar = char;
+    if (!this.firstKey) {
+      this.firstKey = char;
       this.time = performance.now();
       return;
     }
-    this.secondChar = char;
-    const key = this.firstChar + this.secondChar;
-    const key2 = this.secondChar + this.firstChar;
+    const secondKey = char;
+    const key = this.firstKey + secondKey;
+    const key2 = secondKey + this.firstKey;
     const diff = performance.now() - this.time;
-    this.firstChar = '';
-    this.secondChar = '';
+    this.firstKey = '';
     this.time = 0;
     if (diff > this.twoKeysDelay) {
       editor.edit((builder) => {
@@ -86,11 +83,11 @@ export function activate(context: vscode.ExtensionContext) {
   context.subscriptions.push(disposable);
 
   vscode.workspace.onDidChangeConfiguration(event => {
-		let affected = event.affectsConfiguration("key-chord.definitions") || event.affectsConfiguration("key-chord.twoKeysDelay");
-		if (affected) {
-			ctrl.reload();
-		}
-	});
+    let affected = event.affectsConfiguration("key-chord.definitions") || event.affectsConfiguration("key-chord.twoKeysDelay");
+    if (affected) {
+      ctrl.reload();
+    }
+  });
 }
 
 export function deactivate() { }
