@@ -5,6 +5,7 @@ class Controller {
   private twoKeysDelay: number = 0;
   private defs: any;
   private time: number = 0;
+  private timer: NodeJS.Timeout | null = null;
   private keyChars: string = '';
 
   public constructor() {
@@ -33,6 +34,10 @@ class Controller {
   }
 
   public process(char: string, editor: vscode.TextEditor) {
+    if (this.timer) {
+      clearTimeout(this.timer);
+      this.timer = null;
+    }
     if (!this.keyChars.includes(char)) {
       this.firstKey = '';
       this.time = 0;
@@ -44,6 +49,16 @@ class Controller {
     if (!this.firstKey) {
       this.firstKey = char;
       this.time = performance.now();
+      this.timer = setTimeout(() => {
+        if(!this.firstKey) {
+          return;
+        }
+        editor.edit((builder) => {
+          builder.insert(editor.selection.active, this.firstKey);
+        });
+        this.firstKey = '';
+        this.time = 0;
+      }, this.twoKeysDelay);
       return;
     }
     const secondKey = char;
