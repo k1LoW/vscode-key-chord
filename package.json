@@ -9,7 +9,7 @@
     "url": "https://github.com/k1LoW/vscode-key-chord"
   },
   "engines": {
-    "vscode": "^1.96.0"
+    "vscode": "^1.97.0"
   },
   "categories": [
     "Keymaps"
