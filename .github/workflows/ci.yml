@@ -27,6 +27,10 @@ jobs:
       - name: Install xvfb
         run: sudo apt-get install -y xvfb
 
+      - name: Check engine.vscode version
+        run: |
+          diff <(cat package.json| jq '.devDependencies["@types/vscode"]') <(cat package.json | jq .engines.vscode)
+
       - name: Run tests
         run: |
           pnpm install
