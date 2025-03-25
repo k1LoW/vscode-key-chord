@@ -31,3 +31,4 @@ jobs:
         run: |
           pnpm install
           xvfb-run --auto-servernum pnpm run test
+          pnpm run compile
