@@ -1,5 +1,9 @@
 # Changelog
 
+## [v0.2.6](https://github.com/k1LoW/vscode-key-chord/compare/v0.2.5...v0.2.6) - 2025-10-23
+### Other Changes
+- chore(deps): bump the dependencies group across 1 directory with 2 updates by @dependabot[bot] in https://github.com/k1LoW/vscode-key-chord/pull/20
+
 ## [v0.2.5](https://github.com/k1LoW/vscode-key-chord/compare/v0.2.4...v0.2.5) - 2025-03-25
 ### Other Changes
 - chore(deps-dev): bump the dependencies group across 1 directory with 7 updates by @dependabot in https://github.com/k1LoW/vscode-key-chord/pull/12
