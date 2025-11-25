@@ -1,5 +1,14 @@
 # Changelog
 
+## [v0.2.6](https://github.com/k1LoW/vscode-key-chord/compare/v0.2.5...v0.2.6) - 2025-11-25
+### Other Changes
+- chore(deps): bump the dependencies group across 1 directory with 2 updates by @dependabot[bot] in https://github.com/k1LoW/vscode-key-chord/pull/20
+- chore(deps-dev): bump the dependencies group across 1 directory with 9 updates by @dependabot[bot] in https://github.com/k1LoW/vscode-key-chord/pull/18
+- chore(deps): bump actions/setup-node from 5 to 6 in the dependencies group by @dependabot[bot] in https://github.com/k1LoW/vscode-key-chord/pull/23
+- chore: setup tagpr labels by @k1LoW in https://github.com/k1LoW/vscode-key-chord/pull/21
+- chore(deps-dev): bump the dependencies group across 1 directory with 5 updates by @dependabot[bot] in https://github.com/k1LoW/vscode-key-chord/pull/28
+- chore(deps): bump actions/checkout from 5 to 6 in the dependencies group by @dependabot[bot] in https://github.com/k1LoW/vscode-key-chord/pull/27
+
 ## [v0.2.5](https://github.com/k1LoW/vscode-key-chord/compare/v0.2.4...v0.2.5) - 2025-03-25
 ### Other Changes
 - chore(deps-dev): bump the dependencies group across 1 directory with 7 updates by @dependabot in https://github.com/k1LoW/vscode-key-chord/pull/12
